@@ -110,7 +110,7 @@ namespace GradProject_API.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.CartItem", b =>
@@ -148,7 +148,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("ProductId1");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItems", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Category", b =>
@@ -165,7 +165,7 @@ namespace GradProject_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Charity", b =>
@@ -182,7 +182,7 @@ namespace GradProject_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Charities");
+                    b.ToTable("Charities", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Donation", b =>
@@ -224,7 +224,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("CharityId");
 
-                    b.ToTable("Donations");
+                    b.ToTable("Donations", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Order", b =>
@@ -253,7 +253,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.OrderItem", b =>
@@ -287,7 +287,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("ProductId1");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Product", b =>
@@ -365,7 +365,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.Rating", b =>
@@ -395,7 +395,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.RentalRequest", b =>
@@ -448,7 +448,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("RenterId");
 
-                    b.ToTable("RentalRequests");
+                    b.ToTable("RentalRequests", (string)null);
                 });
 
             modelBuilder.Entity("GradProject_API.Models.SwapRequest", b =>
@@ -515,7 +515,7 @@ namespace GradProject_API.Migrations
 
                     b.HasIndex("RequesterId");
 
-                    b.ToTable("SwapRequests");
+                    b.ToTable("SwapRequests", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -10,7 +10,11 @@ publish/
 
 # IDE settings
 .vs/
+.vscode/
 
 # Dependencies
 node_modules/
 packages/
+
+#Secrets
+appsettings.Development.json
