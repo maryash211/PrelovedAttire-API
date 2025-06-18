@@ -1,18 +1,21 @@
 ﻿# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copy everything and restore
-COPY . .
+# Copy csproj and restore
+COPY GradProject-API.csproj .
 RUN dotnet restore
 
-# Publish app
-RUN dotnet publish -c Release -o /out
+# Copy the rest of the files
+COPY . .
+
+# Publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-COPY --from=build /out .
+COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
