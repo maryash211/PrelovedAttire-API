@@ -57,6 +57,18 @@ namespace GradProject_API
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                });
+            });
+
+
 
             var app = builder.Build();
 
@@ -76,7 +88,9 @@ namespace GradProject_API
 
             app.MapControllers();
 
-                        //app.MapProductEndpoints();
+            //app.MapProductEndpoints();
+
+            app.UseCors("AllowFrontend");
 
             app.Run();
         }
