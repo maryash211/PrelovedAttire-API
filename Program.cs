@@ -1,4 +1,4 @@
-using GradProject_API.Models;
+﻿using GradProject_API.Models;
 using Microsoft.EntityFrameworkCore;
 using GradProject_API.Controllers;
 using Microsoft.AspNetCore.Identity;
@@ -67,7 +67,12 @@ namespace GradProject_API
                           .AllowCredentials();
                 });
             });
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                options.ListenAnyIP(Int32.Parse(port));
+            });
 
 
             var app = builder.Build();
@@ -75,11 +80,11 @@ namespace GradProject_API
             app.UseCors("AllowFrontend");
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            //}
 
             app.UseStaticFiles();
 
@@ -92,6 +97,7 @@ namespace GradProject_API
 
             //app.MapProductEndpoints();
 
+            app.MapGet("/", () => "Preloved Attire API is running 🚀");
 
             app.Run();
         }
