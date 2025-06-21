@@ -12,11 +12,11 @@ namespace GradProject_API.Models
 
         public int Quantity { get; set; }//How many of that product are in the cart
 
-        [ForeignKey("ProductId")]
+        //[ForeignKey("ProductId")]
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        [ForeignKey("CartId")]
+        //[ForeignKey("CartId")]
         public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
 

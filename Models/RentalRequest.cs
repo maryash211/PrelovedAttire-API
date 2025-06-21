@@ -15,11 +15,11 @@ namespace GradProject_API.Models
         public string Status { get; set; } // Pending
         public string PickupStatus { get; set; } //not picked - picked up
 
-        [ForeignKey("ProductId")]
+        //[ForeignKey("ProductId")]
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        [ForeignKey("RenterId")]
+        //[ForeignKey("RenterId")]
         public string RenterId { get; set; } //the person who pays money to rent a product (not the owner)
         public virtual ApplicationUser Renter { get; set; }
     }

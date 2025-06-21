@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using GradProject_API.Helpers;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 
 namespace GradProject_API
@@ -22,8 +25,21 @@ namespace GradProject_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Preloved Attire API", Version = "v1" });
+                c.AddServer(new OpenApiServer
+                {
+                    Url = "https://your-app.up.railway.app"
+                });
+            });
+            //builder.Services.AddDbContext<GradDbContext>(options =>
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); //replaced it with..
+
+            //this for db hosting
             builder.Services.AddDbContext<GradDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+                .ReplaceService<IMigrationsSqlGenerator, NpgsqlCustomMigrationsSqlGenerator>());
 
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
@@ -80,7 +96,7 @@ namespace GradProject_API
             app.UseCors("AllowFrontend");
 
             // Configure the HTTP request pipeline.
-            //if (app.Environment.IsDevelopment())
+            //if (app.Environment.IsDevelopment())  //removed that to make it work on server
             //{
                 app.UseSwagger();
                 app.UseSwaggerUI();

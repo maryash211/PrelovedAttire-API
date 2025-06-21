@@ -18,7 +18,7 @@ namespace GradProject_API.Models
         public string Status { get; set; } //pending
         public DateTime RequestDate { get; set; }
 
-        [ForeignKey("RequestedProductId")]
+        //[ForeignKey("RequestedProductId")]
         public int RequestedProductId { get; set; }
         public virtual Product RequestedProduct { get; set; }
 
@@ -26,7 +26,7 @@ namespace GradProject_API.Models
         public virtual Product OfferedProduct { get; set; }
 
 
-        [ForeignKey("RequesterId")]
+        //[ForeignKey("RequesterId")]
         public string RequesterId { get; set; }
         public virtual ApplicationUser Requester { get; set; }
     }

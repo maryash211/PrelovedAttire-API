@@ -50,11 +50,11 @@ namespace GradProject_API.Models
         //public decimal SecurityDeposit { get; set; }
         //public string ReturnPolicy { get; set; }
 
-        [ForeignKey("Category")]
+        //[ForeignKey("Category")]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        [ForeignKey("User")]
+        //[ForeignKey("User")]
         public string UserId { get; set; } 
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }

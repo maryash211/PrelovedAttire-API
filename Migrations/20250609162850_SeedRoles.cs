@@ -13,7 +13,7 @@ namespace GradProject_API.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName", "ConcurrencyStamp" },
-                values: new object[] {"1", "Admin", "Admin".ToUpper(), "a1b2c3d4-e5f6-7890-abcd-ef1234567890"}
+                values: new object[] { "1", "Admin", "Admin".ToUpper(), "a1b2c3d4-e5f6-7890-abcd-ef1234567890" }
             );
 
             migrationBuilder.InsertData(
